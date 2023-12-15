@@ -3,70 +3,82 @@
 \section{Introductie}%
 \label{sec:introductie}
 
-Waarover zal je bachelorproef gaan? Introduceer het thema en zorg dat volgende zaken zeker duidelijk aanwezig zijn:
+Customer Relationship Management (CRM) is voor elk bedrijf een belangrijk bedrijfsproces. Tijdens dit proces wordt er gevoelige data verwerkt en bijgehouden. Hiervoor bestaan er ondertussen al verschillende software pakketten om dit te vergemakkelijken. Het verwerken van deze data moet dan ook goed beveiligd zijn tegen cyberaanvallen.
 
+Momenteel doet het bedrijf Excentis NV aan Customer Relationship Management met behulp van Microsoft Sharepoint, Hubspot en Odoo. Om dit bedrijfsproces te vergemakkelijken, wil het bedrijf overstappen van drie systemen naar één systeem. Hierbij is het cybersecurity aspect sterk van belang om de gevoelige customer data te beveiligen.
+
+\newline
+Volgende zaken worden onderzocht:
 \begin{itemize}
-  \item kaderen thema
-  \item de doelgroep
-  \item de probleemstelling en (centrale) onderzoeksvraag
-  \item de onderzoeksdoelstelling
+    \item Hoe voldoen CRM pakketten aan de huidige cybersecurity best practices en standaarden?
+    \item Hoe behandelen deze CRM systemen Data Loss Prevention (DLP)?
+    \item Hoe kunnen CRM systemen integreren met systemen zoals JIRA ITSM, Opsgenie, MS Sentinel voor detectie, reactie en herstel?
 \end{itemize}
+  
+Uit deze vragen wordt een rapport opgesteld met een concrete uitwerking over hoe Data Loss Prevention kan samenwerken met CRM systemen.
 
-Denk er aan: een typische bachelorproef is \textit{toegepast onderzoek}, wat betekent dat je start vanuit een concrete probleemsituatie in bedrijfscontext, een \textbf{casus}. Het is belangrijk om je onderwerp goed af te bakenen: je gaat voor die \textit{ene specifieke probleemsituatie} op zoek naar een goede oplossing, op basis van de huidige kennis in het vakgebied.
+Hierbij wordt een proof-of-concept opgezet van 3 of 4 CRM mogelijkheden om aan te tonen hoe deze veilig kunnen opgezet worden en Data Loss Prevention toepassen.
 
-De doelgroep moet ook concreet en duidelijk zijn, dus geen algemene of vaag gedefinieerde groepen zoals \emph{bedrijven}, \emph{developers}, \emph{Vlamingen}, enz. Je richt je in elk geval op it-professionals, een bachelorproef is geen populariserende tekst. Eén specifiek bedrijf (die te maken hebben met een concrete probleemsituatie) is dus beter dan \emph{bedrijven} in het algemeen.
-
-Formuleer duidelijk de onderzoeksvraag! De begeleiders lezen nog steeds te veel voorstellen waarin we geen onderzoeksvraag terugvinden.
-
-Schrijf ook iets over de doelstelling. Wat zie je als het concrete eindresultaat van je onderzoek, naast de uitgeschreven scriptie? Is het een proof-of-concept, een rapport met aanbevelingen, \ldots Met welk eindresultaat kan je je bachelorproef als een succes beschouwen?
 
 %---------- Stand van zaken ---------------------------------------------------
 
 \section{State-of-the-art}%
 \label{sec:state-of-the-art}
+\subsection{Cybersecurity Standaarden}
 
-Hier beschrijf je de \emph{state-of-the-art} rondom je gekozen onderzoeksdomein, d.w.z.\ een inleidende, doorlopende tekst over het onderzoeksdomein van je bachelorproef. Je steunt daarbij heel sterk op de professionele \emph{vakliteratuur}, en niet zozeer op populariserende teksten voor een breed publiek. Wat is de huidige stand van zaken in dit domein, en wat zijn nog eventuele open vragen (die misschien de aanleiding waren tot je onderzoeksvraag!)?
+De voornamelijkste cybersecurity standaarden waaraan een bedrijf, en de processen, moet voldoen zijn de \emph{General Data Protection Regulation (GDPR)} en \emph{Network and Information Security 2 (NIS2) Directive}.
+\subsubsection{GDPR}
 
-Je mag de titel van deze sectie ook aanpassen (literatuurstudie, stand van zaken, enz.). Zijn er al gelijkaardige onderzoeken gevoerd? Wat concluderen ze? Wat is het verschil met jouw onderzoek?
+In 2016 heeft de Europese Commissie de GDPR richtlijnen opgesteld. De richtlijnen geven de privacy rechten aan in verband met persoonsgegevens van elke Europese burger. Sinds mei 2020 wordt er om de vier jaar een evaluatie gedaan van deze regulatie. \autocite{Office2016}
 
-Verwijs bij elke introductie van een term of bewering over het domein naar de vakliteratuur, bijvoorbeeld~\autocite{Hykes2013}! Denk zeker goed na welke werken je refereert en waarom.
+De verwerking van persoonsgegevens moet voldoen aan de beginselen van de GDPR. Dit wil zeggen dat de verwerkte gegevens alleen het strikt noodzakelijke mogen bevatten, actueel moeten zijn en voor een beperkte tijd opgeslagen mogen worden. Bijkomend moeten de gegevens beschermd zijn tegen verlies of beschadiging en is de persoon of instantie die de gegevens verwerkt aansprakelijk.
 
-Draag zorg voor correcte literatuurverwijzingen! Een bronvermelding hoort thuis \emph{binnen} de zin waar je je op die bron baseert, dus niet er buiten! Maak meteen een verwijzing als je gebruik maakt van een bron. Doe dit dus \emph{niet} aan het einde van een lange paragraaf. Baseer nooit teveel aansluitende tekst op eenzelfde bron.
+\subsubsection{NIS2}
+De Europese Unie heeft het NIS2 opgesteld met als doel een gelijk en hoog niveau van cybersecurity te bereiken in alle lidstaten. Deze richtlijn zou in elke lidstaat moeten geadopteerd zijn tegen 17 oktober 2024. Daarna evalueert de Europese Commissie elke drie jaar de richtlijn opnieuw om eventuele aanpassingen in te voeren. \autocite{Office2022}
 
-Als je informatie over bronnen verzamelt in JabRef, zorg er dan voor dat alle nodige info aanwezig is om de bron terug te vinden (zoals uitvoerig besproken in de lessen Research Methods).
+NIS2 zet een aantal basismaatregelen op voor bedrijven op basis van hun grootte en werksector. Zo verwacht de Europese Unie dat elk middelgroot bedrijf een plan heeft om cyberincidenten te behandelen, alsook back-upbeheer. Waar het past moet multifactor authenticatie (MFA) gebruikt worden.
 
-% Voor literatuurverwijzingen zijn er twee belangrijke commando's:
-% \autocite{KEY} => (Auteur, jaartal) Gebruik dit als de naam van de auteur
-%   geen onderdeel is van de zin.
-% \textcite{KEY} => Auteur (jaartal)  Gebruik dit als de auteursnaam wel een
-%   functie heeft in de zin (bv. ``Uit onderzoek door Doll & Hill (1954) bleek
-%   ...'')
+\subsubsection{Cyberfundamentals Framework}
+Naar aanleiding van voorgaande richtlijnen heeft het \textcite{FUNDAMENTALS2023} (CCB) een framework opgesteld om bedrijven te helpen voldoen aan bepaalde niveaus van beveiliging. Het framework is gebaseerd op vier veelgebruikte cybersecurity frameworks; namelijk NIST CSF, ISO 27001/ISO 27002, CIS Controls en IEC 62443.
 
-Je mag deze sectie nog verder onderverdelen in subsecties als dit de structuur van de tekst kan verduidelijken.
+In dit framework is er een onderscheid tussen 4 niveaus van beveiliging; Small, Basis, Belangrijk en Essentieel. De richtlijnen binnen het Small niveau dienen om een eerste inschatting te maken voor micro-organisaties. Terwijl het Essentieel niveau bedoeld is om geavanceerde cyberaanvallen tegen te gaan. \autocite{FUNDAMENTALS2023a}
+
+\subsection{Security in CRM systemen}
+Volgens \textcite{CRMSecurity} zijn er een aantal cyberaanvallen die het meest een bedreiging vormen voor Customer Relationship Management systemen. \newline
+Een Account Takeover (ATO) houdt in dat een onbevoegde persoon de inloggegevens van een bevoegd persoon gebruikt om in het systeem data te stelen. \newline
+
+Een Denial of Service Attack (DoS), of Distributed Denial of Service Attack (DDoS), kan ervoor zorgen dat het CRM systeem gedurende een bepaalde tijd niet meer werkt. Dit kan gevolgen hebben voor een bedrijf, aangezien ze hierdoor tijdelijk contact verliezen met hun klanten en dus alternatieven moeten gebruiken om hun klanten in te lichten.
+
+\subsection{Data Loss Prevention}
+Data Loss Prevention systemen monitoren data in een netwerk en houden bij wie toegang heeft tot welk type data. Op die manier is access control toegepast en wordt er vermeden dat accounts van werknemers toegang hebben tot irrelevante, maar gevoelige data.
 
 %---------- Methodologie ------------------------------------------------------
 \section{Methodologie}%
 \label{sec:methodologie}
 
-Hier beschrijf je hoe je van plan bent het onderzoek te voeren. Welke onderzoekstechniek ga je toepassen om elk van je onderzoeksvragen te beantwoorden? Gebruik je hiervoor literatuurstudie, interviews met belanghebbenden (bv.~voor requirements-analyse), experimenten, simulaties, vergelijkende studie, risico-analyse, PoC, \ldots?
+In eerste instantie vindt er een literatuurstudie plaats. Hierin worden de huidige cybersecurity standaarden bekeken, voornamelijk \emph{General Data Protection Regulation (GDPR)} en \emph{Network and Information Security 2 (NIS2) Directive}. \newline
 
-Valt je onderwerp onder één van de typische soorten bachelorproeven die besproken zijn in de lessen Research Methods (bv.\ vergelijkende studie of risico-analyse)? Zorg er dan ook voor dat we duidelijk de verschillende stappen terug vinden die we verwachten in dit soort onderzoek!
+Daarnaast worden de veelvoorkomende bedreigingen voor CRM systemen onderzocht en eventuele oplossingen en best practices. Hierbij wordt ook de werking van Data Loss Prevention systemen bestudeerd.
 
-Vermijd onderzoekstechnieken die geen objectieve, meetbare resultaten kunnen opleveren. Enquêtes, bijvoorbeeld, zijn voor een bachelorproef informatica meestal \textbf{niet geschikt}. De antwoorden zijn eerder meningen dan feiten en in de praktijk blijkt het ook bijzonder moeilijk om voldoende respondenten te vinden. Studenten die een enquête willen voeren, hebben meestal ook geen goede definitie van de populatie, waardoor ook niet kan aangetoond worden dat eventuele resultaten representatief zijn.
+Vervolgens helpt een requirements-analyse te bepalen aan welke functies het CRM software pakket moet voldoen. Voornamelijk houdt dit de huidige staat van de Sharepoint omgeving binnen Excentis in. Aangezien CRM ook geïmplementeerd zit in brede centrale softwarepakketten, worden deze pakketten extra onder de loep genomen om te vergelijken met de kleinere specifieke pakketten. Een voorbeeld hiervan is Odoo, die meer aanbied, terwijl Hubspot specifiek gericht is op CRM.
 
-Uit dit onderdeel moet duidelijk naar voor komen dat je bachelorproef ook technisch voldoen\-de diepgang zal bevatten. Het zou niet kloppen als een bachelorproef informatica ook door bv.\ een student marketing zou kunnen uitgevoerd worden.
+Aan de hand van de literatuurstudie en de requirements-analyse worden de mogelijke CRM en DLP oplossingen bekeken. \newline
 
-Je beschrijft ook al welke tools (hardware, software, diensten, \ldots) je denkt hiervoor te gebruiken of te ontwikkelen.
+De mogelijkheden worden grondig onderzocht aan de hand van officiële documentatie en mogelijke configuratie. Om incidenten te detecteren, en hierop te reageren, wordt ook onderzocht of het systeem kan integreren met JIRA ITSM, Opsgenie en MSSentinel. Wat betreft DLP oplossingen wordt er in eerste instantie gekeken of het CRM systeem zelf een DLP oplossing biedt. Mocht dit niet het geval zijn, wordt er gekeken om DLP van Microsoft Defender of Google Cloud te implementeren.
 
-Probeer ook een tijdschatting te maken. Hoe lang zal je met elke fase van je onderzoek bezig zijn en wat zijn de concrete \emph{deliverables} in elke fase?
+Eens een beperkt aantal tools geselecteerd zijn, wordt er een proof-of-concept van de tools opgesteld. Dit zal de samenwerking van CRM en DLP demonstreren, alsook een implementatie die voldoet aan de huidige cybersecurity standaarden. \newline
+
+Het maken van de proof-of-concepts voor de verschillende tools duurt het langst. Dit komt aangezien de tools uitgebreid onderzocht en getest worden in verband met het implementeren van mogelijke cybersecurity maatregelen.
+
 
 %---------- Verwachte resultaten ----------------------------------------------
 \section{Verwacht resultaat, conclusie}%
 \label{sec:verwachte_resultaten}
 
-Hier beschrijf je welke resultaten je verwacht. Als je metingen en simulaties uitvoert, kan je hier al mock-ups maken van de grafieken samen met de verwachte conclusies. Benoem zeker al je assen en de onderdelen van de grafiek die je gaat gebruiken. Dit zorgt ervoor dat je concreet weet welk soort data je moet verzamelen en hoe je die moet meten.
+De meeste Customer Relationship Management tools worden verwacht een basis implementatie te hebben van cybersecurity maatregelen, zoals access control en multifactor authentication. Daarom voldoen CRM systemen vaak aan een basis overeenstemming met standaarden, waaronder GDPR en NIS2. Toch wordt verwacht een verschil op te merken tussen bepaalde tools in het niveau van overeenstemming. Waar de ene tool een basis implementatie heeft, neemt de andere geavanceerde maatregelen.
 
-Wat heeft de doelgroep van je onderzoek aan het resultaat? Op welke manier zorgt jouw bachelorproef voor een meerwaarde?
+Wat betreft Data Loss Prevention, is de verwachting dat CRM systemen zelf niets bieden, maar wel samenwerken met externe tools zoals DLP van Microsoft Defender of Google Cloud. Dit komt omdat de functies van DLP een bredere toepassing hebben binnen een bedrijf dan alleen samen te werken met CRM.
 
-Hier beschrijf je wat je verwacht uit je onderzoek, met de motivatie waarom. Het is \textbf{niet} erg indien uit je onderzoek andere resultaten en conclusies vloeien dan dat je hier beschrijft: het is dan juist interessant om te onderzoeken waarom jouw hypothesen niet overeenkomen met de resultaten.
+Verdere maatregelen in verband met detectie, reactie en herstel zijn niet vaak te vinden binnen CRM tools zelf. Hiervoor zullen dus externe monitoring en back-up tools moeten worden gebruikt. CRM hebben wel soms zelf logging om activiteiten binnen de CRM vast te leggen.
+
 
